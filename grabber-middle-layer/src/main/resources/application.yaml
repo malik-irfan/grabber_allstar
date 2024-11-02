@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: grabber-middle-layer
+  sql:
+    init:
+      mode: ALWAYS
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+  ai:
+    ollama:
+      chat:
+        model: llama3
+        options:
+          temperature: 0.1
+      embedding:
+        enabled: true
+        options:
+          model: all-minilm
+  vectorstore:
+    pgvector:
+    index-type: HNSW
+    distance-type: COSINE_DISTANCE
+    #dimension: 1536 # pgvector
+    #dimension: 384 # for all-minilm
+    #dimension: 4096 # for llama3
+    #initializeSchema: true
+
+server:
+  port: 7171
